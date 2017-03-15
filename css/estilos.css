@@ -1,0 +1,658 @@
+/*
+    Archivo: estilos.css
+    Autor: Nelson Andrés Sora Mora
+    Ingeniería de Sistemas y Computación
+    Universidad Nacional de Colombia
+    Gráfica Interactiva
+*/
+
+/*Soporte de caracteres Unicode.*/
+@charset "UTF-8";
+
+html {
+    width: 100%;
+}
+
+/* Elimina las margenes por defecto del navegador.*/
+* {
+	margin:0;
+}
+
+/*Pone el body de color blanco y que todos los elementos que 
+contenga estén posicionados relativamente a él.*/
+body {
+    position: relative;
+    background-color: #fff;
+    color: #908b8b;
+}
+
+/*Cambiar el formato de las cabeceras.*/
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    color: #009cde;
+}
+
+/*Ningún enlace va a llevar subrayado.*/
+a {
+    text-decoration: none;
+}
+
+/*Agrupamiento de campos de un formulario, ocupará todo el ancho de su contenedor.*/
+fieldset {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/*Etiqueta de los campos en un formulario, queda ajustado a la derecha seguido por el campo.*/
+label {
+    width: 180px;
+    display: inline-block;
+    text-align: right;
+    vertical-align: top;
+}
+
+/*Funcionalidad de volver a mostrar el menú cuando se pasa de
+480px a un mayor tamaño de pantalla.*/
+@media screen and (min-width: 480px){
+    .navegacion {
+        display: block !important;
+    }
+}
+
+/*=====================
+Menú de navegación
+=====================*/
+
+/*Estilo para el botón que se activa cuando el tamaño de pantalla es de
+menos de 480px.
+Cuando se pone el puntero sobre él, ocupa la totalidad de la pantalla,
+el puntero cambia de forma, tiene una transición de tiempo entre
+hover y normal.
+Con z-index: 999 nos aseguramos que quede al frente de cualquier otro elemento.
+Con position: fixed nos aseguramos que esté siempre en el tope de la pantalla
+al estar "atado" al navegador y no a la pantalla.*/
+button.menu {
+    background-color: #34393d;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 20px;
+    transition: 0.5s;
+    display: none;
+    position: fixed;
+    z-index: 999;
+}
+
+/*El span es el elemento utilizado para crear la "animación" de que aparezca
+el mensaje "Menú" cuando se pone el puntero sobre el botón.*/
+button.menu span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+/*La animación consiste en la palabra "Menú" que se esconde al quitar el puntero
+(transparente) del botón y se corre a la izquierda 5 px (right: -5px) con un
+tiempo de 0.5seg.*/
+button.menu span:after {
+  content: 'Menú';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -5px;
+  transition: 0.5s;
+}
+
+/*Cuando se pone el cursor encima del botón se produce un desplazamiento del span
+70 px hacia la derecha.*/
+button.menu:hover span {
+  padding-right: 70px;
+}
+
+/*El texto se vuelve opaco (aparece) y sale totalmente del margen izquierdo.*/
+button.menu:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/*Cuando el botón está activo (presionado y el menú ha sido desplegado)*/
+button.menu.active {
+    background-color: #009cde;
+    color: white;
+}
+
+/*Cuando el botón no está activo, pero se pone el puntero sobre él*/
+button.menu:hover:not(.active) {
+    color: #009cde;
+    background-color: #111;
+}
+
+/*Fondo del botón, usado para "empujar" todo hacia abajo para que el botón no tape la portada.*/
+.botonfix {
+    width: 100%;
+    height: 48px;
+    background-color: white;
+    display: none;
+}
+
+/*Menú de navegación (lista/contenedor de los ítems del menú).
+No tiene color, para que parezca que los ítems flotan sin 
+estar contenidos dentro de algún elemento, con z-index: 999 
+nos aseguramos que quede al frente de cualquier otro elemento.
+Estará desplazada un 30% a la derecha desde el borde izquierdo
+de la pantalla. Con position: fixed nos aseguramos que esté
+siempre en el tope de la pantalla al estar "atado" al navegador
+y no a la pantalla.*/
+.navegacion ul {
+    list-style-type: none;
+    margin-top: 2%;
+    margin-left: 30%;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    width: 70%;
+    min-height: 50px;
+    max-height: 90%;
+    z-index: 999;
+    display: block;
+}
+
+/*Ítems del menú de navegación. Con calc() y las unidades en viewpoints [vw]
+se garantiza que la fuente no disminuya tanto cuando se disminuye el 
+tamaño de pantalla. Nota: las unidades en viewpoints solo funcionan con 
+fuentes escalables.*/
+.navegacion li {
+	position: relative;
+    float: left;
+    margin-bottom: 2px;
+    font-size: 20px;
+    font-size: calc(60% + 1.15vw);
+    padding: 1.5%;
+    background-color: #34393d;
+    border-left: 1px solid white;
+}
+
+/*Se omite el subrayado de los enlaces y se pone un tiempo de transición para
+suavizar el paso entre hover y normal.*/
+.navegacion li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+/*Cuando el enlace indica que la página no es la activa actualmente, pero se pone
+el puntero sobre él*/
+.navegacion li a:hover:not(.active) {
+	color: #009cde;
+    background-color: #111;
+}
+
+ /*Cuando el enlace indica que la página es la actualmente activa*/
+.navegacion .active {
+    background-color: #009cde;
+}
+
+/*Todos los ítems del menú de navegación están alineados a la izquierda
+excepto el de Acerca de (id="acerca"), que está alineado a la derecha.*/
+#acerca {
+    float: right;
+}
+
+/*=====================
+Bloques
+=====================*/
+
+/* Agrupación de bloques en la pagina.*/
+.grupo {
+    margin: 30px;
+}
+
+/*Representa la división de un grupo en terceras partes. El atributo height es auto.*/
+.bloque {
+	float: left;
+	padding: 10px;
+	width: 33%;
+	height: auto;
+}
+
+/* Indica que el texto de los párrafos en un bloque se justifique.*/
+.bloque p {
+  text-align: justify;
+}
+
+/*Una imagen dentro de un bloque ocupará todo el ancho.*/
+.bloque img {
+    width: 100%;
+}
+
+/*Representa la división de un grupo en mitades. El atributo height es auto.*/
+.bloque2 {
+    float: left;
+    padding: 10px;
+    width: 50%;
+    height: auto;
+}
+
+/*Representa la división de un grupo en dos terceras partes. El atributo height es auto.*/
+.bloque3 {
+    float: left;
+    padding: 10px;
+    width: 66%;
+    height: auto;
+}
+
+/*Un sub-bloque es un bloque que ocupa todo el ancho, normalmente para ponerlo entre un bloque.*/
+.sub-bloque {
+	float: left;
+	padding: 10px;
+	width: 100%;
+	height: auto;
+}
+
+/*Un contenedor es un bloque que ocupará todo el espacio a lo ancho dependiendo donde 
+se le ponga, pero el largo se ajustará a lo que esté contenido en él.*/
+.contenedor {
+    position: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Se crea para indicar el titulo dentro de un grupo. 
+Sirve también para alojar contenido que necesite centrarse.*/
+.encabezado {
+  text-align: center;
+  position: inline;
+}
+
+/*Encaja un contenido a todo el ancho, ajustando el alto.*/
+.ajustado {
+    width: 100%;
+    height: auto;
+}
+
+/*=====================
+Portada
+=====================*/
+
+/*La portada cuando no se usa la presentación de imágenes. Ocupará todo el ancho y tendrá un
+largo fijo de 450px, haciendo que la imagen contenida en él se corte por sus dimensiones (hidden).*/
+.portada {
+    width: 100%;
+    height: 450px;
+    margin-top: 4%;
+    overflow: hidden;
+}
+
+/*La imagen contenida en la portada ocupará toda la portada a lo ancho.*/
+.fondoportada {
+    width: 100%;
+}
+
+/*El pie de portada está hecho para incluir el logo y los "botones" de redes sociales,
+por lo cual ocupará todo el ancho.*/
+.pieportada {
+    position: inline-block;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/*El logo dentro del pie de portada estará ubicado a la izquierda y ocupará un 30% del ancho.*/
+.logopie {
+    width: 30%;
+    float: left;
+    margin-top: -10px;
+}
+
+/*=====================
+Redes Sociales
+=====================*/
+
+/*Estilo para los "botones" de las redes sociales en la parte de arriba 
+antes del contenido y en la parte de abajo en el pie de página.
+Se asegura que permanezacn juntos en bloque.*/
+.socials {
+    float: right;
+    overflow: hidden;
+    margin: 20px 20px;
+    position: inline-block;
+}
+
+/*Estilo para las fuentes Font Awesome dentro de los "botones" de redes 
+sociales.
+Tienen un tiempo de duración de la transición que suaviza el paso 
+entre hover y normal.*/
+.socials .fa {
+    color: #fff;
+    display: block;
+    float: left;
+    text-align: center;
+    font-size: 30px;
+    line-height: 62px;
+    width: 60px;
+    border-radius: 500px;
+    height: 60px;
+    background-color: #ddd;
+    margin-left: 20px;
+    transition-duration: 0.6s;
+}
+
+/*Estilo para las fuentes Font Awesome dento de los "botones" de redes
+sociales y se pone el puntero sobre ellas.*/
+.socials .fa:hover {
+    background-color: #009cde;
+}
+
+/*=====================
+Pie de página
+=====================*/
+
+/*Se hace un bloque de color gris claro en el que se ocultan el subrayado
+y las viñetas de listas. Ocupa todo el espacio a lo ancho de la pantalla.
+Se disminuye la fuente un 20%. Con clear: both evitamos que se "cuelen"
+elementos ni a la derecha ni a la izquierda del div.*/
+.piepagina {
+    left: 0;
+    right: 0;
+    margin: 0;
+    clear: both;
+    position: block;
+    color: black;
+    font-size: 80%;
+    text-decoration: none;
+    list-style-type: none;
+    background-color: lightgrey;
+    width: 100%;
+    height: auto;
+}
+
+/*No se muestra ni el subrayado ni las viñetas de una lista, pero el espacio
+donde se ubicaban las viñetas queda vacío, por lo que se corre la margen de
+los ítems de la lista hacia la izquierda.*/
+.piepagina .contenedor .bloque li {
+    text-decoration: none;
+    list-style-type: none;
+    margin-left: -40px;
+}
+
+/*Los "botones" de redes sociales se ubicarán a la derecha y estarán alejados del
+borde 50px.*/
+.piepagina .socials {
+    float: right;
+    margin-right: 50px;
+}
+
+/*El fondo de los "botones" de redes sociales para el pie de página será distinto
+al de los de la cabecera*/
+.piepagina .socials .fa {
+    background-color: #009cde;
+}
+
+/*El fondo de los "botones" de redes sociales será distinto al pasar el puntero por encima*/
+.piepagina .socials .fa:hover {
+    background-color: black;
+}
+
+/*La firma es el bloque al final de una página, también tiene un largo ajustable. */
+.firma {
+    position: inline-block;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+}
+ /*Los enlaces de la firma no llevan subrayado y están en letra cursiva.*/
+.firma a {
+    font-style: italic;
+    text-decoration: none;
+}
+
+/*Un contenedor dentro de un pie de página se ajusta a lo que esté contenido en él, sin
+importar si es de mayor longitud.*/
+.piepagina .contenedor {
+    overflow: auto;
+}
+
+/*Un bloque en el pie de página*/
+.piepagina .bloque {
+    float: left;
+    margin: 30px;
+    margin-left: 60px;
+    width: 200px;
+    overflow: auto;
+}
+
+/*=====================
+Transición de imágenes
+=====================*/
+
+/*Todas las imágenes ocuparán todo el marco que las contiene a lo ancho.
+Inicialmente todas están escondidas.*/
+.mySlides {
+    display: none;
+    width: 100%;  
+}
+
+/*El marco que contiene toda la transición y los controles.*/
+#transicion {
+    margin-top: 4%;
+    max-width: 100%;
+}
+
+/*El marco para los controles de anterior/siguiente ocupa todo el ancho.*/
+#control {
+    width: 100%;
+}
+
+/*Los controles son en realidad símbolos de la fuente de w3, tendrán un tamaño de 30px.
+Cuando el puntero pase sobre ellos cambiará su apariencia.*/
+#controles {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/*El marco para los indicadores de imagen, que también pueden ser pulsados, ocuparán
+la mitad del marco.*/
+#distintivo {
+    width:50%;
+}
+
+/*Los indicadores tendrán un tamaño de 20x20px.
+Cuando el puntero pase sobre ellos cambiará su apariencia.*/
+.demo {
+    height: 20px;
+    width: 20px;
+    padding:0;
+    cursor: pointer;
+}
+
+/*Contenedor del logo principal, ocupará todo el ancho del marco.*/
+#centro {
+    width:100%;
+}
+
+/*El logo ocupará la mitad de su contenedor.*/
+#logo {
+    width:50%;
+}
+
+/*=====================
+Otros
+=====================*/
+
+/*Estilo para un botón que tendrá una "animación", ya que le aparecerá un cheurón
+al lado derecho cuando se ponga el puntero sobre él. Tendrá un tiempo de transición
+de 0.5, y el puntero cambiará su apariencia. Con clear: both evitamos que se "cuelen"
+elementos ni a la derecha ni a la izquierda del botón.*/
+.btnanimado {
+  display: block;
+  border-radius: 4px;
+  background-color: #009cde;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+  float: right;
+  clear: both;
+}
+
+/*El span es el elemento utilizado para crear la "animación" de que aparezca
+el cheurón cuando se pone el puntero sobre el botón.*/
+.btnanimado span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+/*La animación consiste en el cheurón que se esconde al quitar el puntero
+(transparente) del botón y se corre a la izquierda 20 px (right: -20px) con un
+tiempo de 0.5seg.*/
+.btnanimado span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+/*Cuando se pone el cursor encima del botón se produce un desplazamiento del span
+25 px hacia la derecha.*/
+.btnanimado:hover span {
+  padding-right: 25px;
+}
+
+/*El texto se vuelve opaco (aparece) y sale totalmente del margen izquierdo.*/
+.btnanimado:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/*Botón que se alinea a la izquierda.*/
+.btnanim2 {
+    float: left;
+}
+
+/*Enlaces que cambian de color respecto al original.*/
+.enlaces a {
+    color: #009cde;
+}
+
+/*Íconos de la fuente Font Awesome que son más grandes cuando están entre los enlaces.*/
+.enlaces .fa {
+    font-size: 50px;
+}
+
+/*Clase utilizada para los enlaces: Ir abajo e Ir arriba.*/
+.goto {
+    float: right;
+    color: #009cde;
+}
+
+/*Tamaño del marco que contiene el mapa de Google Maps.*/
+#map {
+    width: 80%;
+    height: 500px;
+    margin-left: 10%;
+}
+
+/*Tamaño del mapa del sitio gráfico.*/
+#sitemap {
+    width: 100%;
+    height: auto;
+}
+
+/*==========================================================================
+Estilos que cambiaran cuando se pase a un tamaño de pantalla menor a 480px.
+==========================================================================*/
+@media screen and (max-width: 480px){
+
+    /*Se mostrará el botón para activar/desactivar el menú de navegación.*/
+	button.menu {
+    	display: block;
+    }
+
+    /*Muestra el fondo del botón, para "empujar" todo hacia abajo.*/
+    .botonfix {
+        display: block;
+        clear: both;
+    }
+
+    /*Se ocultará inicialmente el menú de navegación.
+    La activación/desactivación será controlada por el botón de menú.*/
+    .navegacion {
+        display: none;
+    }    
+
+    /*Los ítems del menú se ubicarán ahora uno encima del otro de manera vertical.*/
+    .navegacion li {
+        float: none;
+        font-size: 15px;
+        padding: 0;
+    }
+
+    /*El ítem de "Acerca" ahora quedará debajo de los demás ítems del menú.*/
+    #acerca {
+        float: none;
+    }
+
+    /*Se ocultan los controles de la presentación de imágenes.*/
+    #controles {
+        display: none;
+    }
+
+    /*Se ocultan los indicadores de la presentación de imágenes.*/
+    #distintivo {
+        display: none;
+    }
+
+    /*El logo pierde su centro al realizar el cambo de pantalla.
+    Se corrije desplazando su marco más hacia arriba.*/
+    #centro {
+        margin-top: -100px;
+    }
+
+    /*Se disminuye el tamaño del logo y se empuja un poco más hacia arriba.*/
+    #logo {
+        width:80%;
+        margin-top: -20px;
+    }
+
+    /*Los bloques que ocupaban 33%, 50% y 66% del ancho, ahora ocupan todo el ancho.*/
+    .bloque, .bloque2, .bloque3{
+        width: 100%;
+    }
+
+    /*La portada que se usa cuando no está la presentación de imágenes tendrá un alto fijo de 200px.*/
+    .portada {
+        height: 200px;
+    }
+
+    /*Se cambia el ancho del logo del pie de portada.*/
+    .logopie {
+        width: 90%;
+    }
+
+    /*El marco del mapa de Google Maps ahora ocupa el 98% a lo ancho y está centrado.*/
+    #map {
+        width: 98%;
+        margin-left: 1%;
+    }
+}

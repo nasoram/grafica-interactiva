@@ -1,0 +1,154 @@
+<!--
+    Archivo: conocenos.html
+    Autor: Nelson Andrés Sora Mora
+    Ingeniería de Sistemas y Computación
+    Universidad Nacional de Colombia
+    Gráfica Interactiva
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Formato de codificación UTF-8 para ciertos simbolos -->
+        <meta charset="UTF-8">
+        <!-- Ubicación de los estilos -->
+        <link rel="stylesheet" type="text/css" href="css/estilos.css">
+        <!--Ubicación de la hoja de estilos de w3schools utilizada para la transición de imágenes de la portada y algunas fuentas-->
+        <link rel="stylesheet" href="css/w3.css">
+        <!--Ubicación de la hoja de estilos de w3schools (necesita conexión)-->
+        <!--<link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">-->
+        <!--Hoja de estilos para las fuentes Font Awesome-->
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <!-- Ícono que se muestra en la pestaña del navegador -->
+        <link rel="shortcut icon" type="image/png" href="img/LOGOMBICO.png"/>
+        <!-- Titulo de la pagina -->
+        <title>Conócenos - Laboratorio Óptico MB</title>
+        <!-- Se adapta a un dispositivo móvil si es el caso -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Autor de la Página-->
+        <meta name="autor" content="Nelson Andrés Sora Mora">
+
+    </head>
+    <body>
+        <!--=====================
+                    MENÚ
+            =====================-->
+        <!--El botón se muestra sólo para tamaño de pantalla menor a 480px
+            y sirve para activar/desactivar el menú.
+            Usa un ícono de las fuentes Font Awesome-->
+        <button class="menu" onclick="menu()"><span><i class="fa fa-bars" aria-hidden="true"></i></span></button>
+        <!--Barra de navegación-->
+        <nav class="navegacion">
+            <ul>
+                <li><a href="index.html" title="Inicio">Inicio</a></li>
+                <li><a href="productos.html" title="Productos">Productos</a></li>
+                <li><a href="tienda.html" title="Tienda">Tienda</a></li>
+                <li class="active"><a href="conocenos.html" title="Conócenos">Conócenos</a></li>
+                <li><a href="contacto.html" title="Contacto">Contacto</a></li>
+                <li id="acerca"><a href="acerca.html" title="Acerca de">Acerca</a></li>
+            </ul>
+        </nav>
+        <!--Fondo del botón, usado para "empujar" todo hacia abajo para que el botón no tape la portada.-->
+        <div class="botonfix"></div>
+
+        <!--========================
+                    PORTADA
+            ========================-->
+        <div class="portada">
+            <img class="fondoportada" src="img/001.jpg"/>
+        </div>
+        <div class="pieportada">
+            <img class="logopie" src="img/LOGOMB.png"/>
+            <!--Íconos de las redes sociales, ayudado de las fuentes Font Awesome-->
+            <div class="socials">
+                <a href="https://www.facebook.com/labopticomb/" class="fa fa-facebook" title="Página en Facebook"></a>
+                <a href="https://twitter.com/nelsonsora" class="fa fa-twitter" title="Perfil de Twitter"></a>
+                <a href="mailto:lo-mb@hotmail.com" class="fa fa-windows" title="Correo electrónico"></a>
+            </div>
+        </div>
+        <!--========================
+                    CONTENIDO
+            ========================-->
+        <div class = "grupo">
+            <!--Se le asigna el nombre "mision" para que pueda ser relacionada esta sección
+            en la página de mapa del sitio.-->
+            <div class="bloque"><a name="mision"></a>
+                <h1>Nuestra Misión</h1>
+                <p>Somos una empresa comprometida a ofrecer soluciones integrales en el cuidado y la salud visual, 
+                    con un alto sentido de profesionalismo y ética comercial a través de productos y servicios profesionales.</p>
+                <br>
+                <p>Ofrecemos calidad, rapidez en nuestra atención, tecnología de avanzada en base a las últimas tendencias, 
+                    precios justos para cada segmento de la población y la mejor garantía a su inversión.</p>
+                <br>
+                <!--Se le asigna el nombre "vision" para que pueda ser relacionada esta sección
+                en la página de mapa del sitio.-->
+                <a name="vision"></a>
+                <h1>Nuestra Visión</h1>
+                <p>Consolidarnos como líderes a nivel nacional para satisfacer las necesidades de nuestros clientes que buscan 
+                    y valoran la calidad en el mercado óptico, manteniendo una política de generación competitiva de utilidades, 
+                    dados a conocer como la cadena de ópticas de mayor cobertura nacional bajo el amparo de la tecnología, 
+                    productividad, talento humano y un profundo espíritu de calidad y servicio.</p>
+            </div>
+            <!--Se le asigna el nombre "valores" para que pueda ser relacionada esta sección
+            en la página de mapa del sitio.-->
+            <div class="bloque"><a name="valores"></a>
+                <h1>Nuestros Valores</h1>
+                <h3>El Cliente y su Bienestar</h3>
+                <p>Trabajamos cada día para ofrecer a nuestros clientes soluciones a todas sus necesidades, en una actitud de 
+                    escucha permanente y una búsqueda objetiva de los productos y servicios que mejor se adapten a sus necesidades.</p>
+                <h3>Precio y Servicio</h3>
+                <p>Ofrecemos a nuestros clientes soluciones personalizadas, siempre al mejor precio. Garantizamos el mejor servicio 
+                    posventa, siempre estaremos al tanto de cualquier sugerencia o reclamo.</p>
+                <h3>Calidad y Mejoramiento continuo</h3>
+                <p>Siendo laboratorio óptico poseemos nuestro propio taller, que está en continuo crecimiento en cuanto a nuevas 
+                    tecnologías, en el que se cumplen a cabalidad todos los requerimientos del cliente, dando las mejores soluciones 
+                    a los problemas de su visión.</p>
+            </div>
+            <div class="bloque">
+                <img src="img/010.jpg" />
+            </div>
+        </div>
+        <!--========================
+                PIE DE PÁGINA
+            ========================-->
+        <div class="piepagina">
+            <div class="contenedor">
+                <div class="bloque">
+                    <h5>Explorador</h5>
+                    <ul>
+                        <li><a href="index.html" title="Inicio">Inicio</a></li>
+                        <li><a href="productos.html" title="Productos">Productos</a></li>
+                        <li><a href="tienda.html" title="Tienda">Tienda</a></li>
+                        <li><a href="conocenos.html" title="Conócenos">Conócenos</a></li>
+                        <li><a href="contacto.html" title="Contacto">Contacto</a></li>
+                        <li><a href="acerca.html" title="Acerca de">Acerca</a></li>
+                    </ul>
+                </div>
+                <div class="bloque">
+                    <h5>Nuestra Ubicación</h5>
+                    <address>
+                        Carrera 21 No. 26A-24 Sur<br>
+                        Barrio Olaya<br>
+                        Bogotá, Colombia<br>
+                        NELSON SORA<br>
+                        <i class="fa fa-phone"></i> 366 26 44<br>
+                        <i class="fa fa-mobile"></i> 314 290 12 38<br>
+                        <i class="fa fa-envelope"></i> <a href="mailto:lo-mb@hotmail.com" title="Correo electrónico">lo-mb@hotmail.com</a>
+                    </address>
+                </div>
+                <!--Íconos de las redes sociales, ayudado de las fuentes Font Awesome-->
+                <div class="socials">
+                    <a href="https://www.facebook.com/labopticomb/" class="fa fa-facebook" title="Página en Facebook"></a>
+                    <a href="https://twitter.com/nelsonsora" class="fa fa-twitter" title="Perfil de Twitter"></a>
+                    <a href="mailto:lo-mb@hotmail.com" class="fa fa-windows" title="Correo electrónico"></a>
+                </div>
+                
+            </div>
+            <div class="firma">
+                    <p>Algunos de los iconos utilizados en este sitio web son propiedad de Font Awesome. <a href="http://fontawesome.io/"><i class="fa fa-flag"></i> Font Awesome 4.7.0</a>.</p>
+                    <p><a href="acerca.html#mapasitio">Mapa del sitio</a>. Laboratorio Óptico MB, 2017.</p>
+                </div>
+        </div>
+        <!--Archivo contenedor de los códigos de JavaScript utilizados-->
+        <script src="js/script.js"></script>
+    </body>
+</html>
